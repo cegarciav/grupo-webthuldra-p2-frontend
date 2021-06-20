@@ -1,38 +1,147 @@
-.App {
-  text-align: center;
+@import url('https://fonts.googleapis.com/css?family=Cinzel');
+@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@900&display=swap');
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+
+html, body {
+  margin: 0;
+  padding: 0;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body {
+  margin: 0;
+  background-color: #ace;
+  font-family: 'Cinzel';
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.material-icons {
+  color: #25559a;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+a {
+  color: #25559a;
+}
+
+#main-header {
+  position: fixed;
+  width: 100%;
+  z-index: 1;
+  top: 0;
+}
+
+nav ul {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  flex-direction: row;
+  list-style-type: none;
+  margin: 0;
+  padding-left: 0;
+  background-color: #25559a;
+  height: max-content;
+  box-sizing: border-box;
 }
 
-.App-link {
-  color: #61dafb;
+nav ul li {
+  height: 100%;
+  padding: 6px 5px;
+  box-sizing: border-box;
+  text-align:justify;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+nav ul li a {
+  color: azure;
+  text-decoration: none;
+  display: inline-block;
+  height: 100%;
+  line-height: 3;
+}
+
+nav ul li:hover {
+  text-decoration: none;
+  background-color: rgb(1, 91, 180);
+}
+
+footer ul {
+  list-style-type: none;
+  margin: 0;
+  padding-left: 1%;
+  background-color: #ace;
+}
+
+footer ul li {
+  display: inline-block;
+  padding: 0.5em;
+  color: #25559a;
+  font-size: 0.8em;
+}
+
+footer ul li a {
+  text-decoration: none;
+  color: #25559a;
+}
+
+main {
+  margin: 0 auto;
+  margin-top: 4.5em;
+  display: block;
+  width: 90%;
+}
+
+.sn-pagination ul {
+  margin: 0 auto;
+  padding: 0%;
+  text-align: center;
+  list-style-type: none;
+}
+
+.sn-pagination ul li {
+  display: inline-block;
+  padding: 0 0.3em;
+}
+
+.sn-pagination a {
+  text-decoration: none;
+  font-size: 3.5vh;
+}
+
+#logo:hover {
+  text-decoration: none;
+  background-color: inherit;
+}
+
+#logo {
+  min-width: max-content;
+}
+
+#logo a {
+  font-family: 'Cinzel Decorative';
+  color: azure;
+  display: inline-block;
+  height: 100%;
+}
+
+#logo a img {
+  width: 3em;
+  height: 3em;
+  vertical-align: middle;
+}
+
+.navbar-form {
+  height: 100%;
+  width: 100%;
+  line-height: 3;
+  background-color: inherit;
+  display: inline-block;
+  padding: 0;
+  cursor: pointer;
+}
+
+.navbar-form button {
+  height: 100%;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  background-color: inherit;
+  border: none;
+  font-family: 'Cinzel';
+  color: azure;
+  cursor: pointer;
 }

@@ -1,26 +1,48 @@
 import React from 'react';
-import logo from './logo.svg';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+} from 'react-router-dom';
+import SignUp from './components/users/signup/signUp';
+import LogIn from './components/users/login/logIn';
+import HomePage from './components/home/homePage';
 import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit
-          <code>src/App.js</code>
-          and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+    <div>
+      <header id="main-header">
+        <nav>
+          <ul>
+            <li id="logo">
+              <a href="/">
+                <img src="/webthuldra_logo.png" alt="Ícono de un copo de nieve." />
+              </a>
+            </li>
+          </ul>
+        </nav>
       </header>
+      <Router>
+        <Switch>
+          <Route path="/signup">
+            <SignUp />
+          </Route>
+          <Route path="/login">
+            <LogIn />
+          </Route>
+          <Route path="/">
+            <HomePage />
+          </Route>
+        </Switch>
+      </Router>
+      <footer>
+        <ul>
+          <li>Webthuldra &copy; 2021</li>
+          <li><a href="/signup">Registrarse</a></li>
+          <li><a href="/login">Iniciar sesión</a></li>
+        </ul>
+      </footer>
     </div>
   );
 }
