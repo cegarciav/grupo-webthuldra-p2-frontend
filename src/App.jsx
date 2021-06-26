@@ -4,6 +4,7 @@ import {
   Switch,
   Route,
 } from 'react-router-dom';
+import UsersRouter from './routers/user';
 import SignUp from './components/users/signup/signUp';
 import LogIn from './components/users/login/logIn';
 import HomePage from './components/home/homePage';
@@ -30,6 +31,9 @@ function App() {
           </Route>
           <Route path="/login">
             <LogIn />
+          </Route>
+          <Route path="/users">
+            <UsersRouter />
           </Route>
           <Route path="/">
             <HomePage />
