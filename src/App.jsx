@@ -5,6 +5,7 @@ import {
   Route,
 } from 'react-router-dom';
 import UsersRouter from './routers/user';
+import StoresRouter from './routers/store';
 import SignUp from './components/users/signup/signUp';
 import LogIn from './components/users/login/logIn';
 import HomePage from './components/home/homePage';
@@ -26,6 +27,9 @@ function App() {
       </header>
       <Router>
         <Switch>
+          <Route exact path="/">
+            <HomePage />
+          </Route>
           <Route path="/signup">
             <SignUp />
           </Route>
@@ -35,8 +39,8 @@ function App() {
           <Route path="/users">
             <UsersRouter />
           </Route>
-          <Route path="/">
-            <HomePage />
+          <Route path="/stores">
+            <StoresRouter />
           </Route>
         </Switch>
       </Router>
