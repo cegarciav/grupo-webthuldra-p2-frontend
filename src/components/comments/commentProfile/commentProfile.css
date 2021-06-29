@@ -1,0 +1,36 @@
+.comment-summary {
+  width: 100%;
+  display: inline-flex;
+}
+
+.comment-summary .user-info {
+  display: flex;
+  flex-direction: column;
+  max-width: 20%;
+}
+
+.comment-summary a {
+  text-decoration: none;
+  color: black;
+}
+
+.comment-summary figure {
+  margin: 0 auto;
+  padding: 0 0.5em;
+  width: inherit;
+}
+
+.comment-summary figure img {
+  width: 100%;
+  border: 1px solid #0d1f39;
+  border-radius: 0.5em;
+}
+
+.comment-summary .user-info p {
+  text-align: center;
+  margin: 0 auto;
+}
+
+.comment-summary .comment-text {
+  width: 80%;
+}

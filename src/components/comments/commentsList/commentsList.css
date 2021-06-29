@@ -1,0 +1,27 @@
+.comments-container {
+  padding-top: 0.3em;
+  width: 60vh;
+  background-color: azure;
+  margin: 0 auto;
+  border-radius: 1em;
+  box-shadow: 0.5vh 0.5vh 2vh #0d1f39;
+  max-height: 60vh;
+}
+
+.comments-container h1 {
+  font-weight: bold;
+}
+
+.comments-container h4 {
+  margin: 0 auto;
+  text-align: center;
+}
+
+.comments-container ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.comments-container li {
+  padding: 0 0.5em;
+}
