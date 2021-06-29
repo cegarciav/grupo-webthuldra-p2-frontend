@@ -1,0 +1,108 @@
+.store-summary {
+  margin: 1vh;
+  max-width: 100%;
+}
+
+.store-summary a {
+  text-align: center;
+  text-decoration: none;
+  background-color: azure;
+  color: black;
+  height: 25vw;
+  width: 60vh;
+  min-height: 250px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: 1em;
+  box-shadow: 0.5vh 0.5vh 2vh #0d1f39;
+  font-weight: bold;
+  margin: 0 auto;
+  margin-bottom: 5vh;
+}
+
+.store-summary article {
+  height: 100%;
+}
+
+.store-summary article section {
+  max-width: 100%;
+  overflow-y: hidden;
+  height: 60%;
+}
+
+.store-summary article img {
+  max-width: 90%;
+  overflow-y: hidden;
+  border-radius: 0.5em;
+}
+
+.store-summary p {
+  text-align: start;
+  padding-left: 1.5em;
+  margin: 0 auto;
+  max-height: 15%;
+}
+
+.store-summary h1 {
+  font-size: 1.5em;
+  max-height: 25%;
+  padding: 1.5vh 0;
+  margin: 0 auto;
+}
+
+.store-main-profile {
+  display: flex;
+  flex-wrap: wrap;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.store-info {
+  flex-grow: 1;
+  padding-right: 1em;
+  box-sizing: border-box;
+}
+
+.store-main-info {
+  height: 70vh;
+}
+
+.store-main-info figure {
+  overflow-y: hidden;
+  border-bottom-left-radius: 1.5em;
+  border-bottom-right-radius: 1.5em;
+  width: 100%;
+  margin: 0;
+  height: 70%;
+}
+
+.store-main-info main {
+  margin: 0 auto;
+  padding: 0;
+}
+
+.store-main-info h1 {
+  text-align: center;
+  font-size: 2em;
+}
+
+.store-main-info h4 {
+  text-align: center;
+}
+
+.store-main-info img {
+  width: 100%;
+  opacity: 0.6;
+  transition: 0.3s;
+}
+
+.store-main-info img:hover {
+  opacity: 1;
+}
+
+.section-divisor {
+  box-shadow: 1em 0em 1em #0d1f39;
+  opacity: 0.2;
+  color: #0d1f39;
+}

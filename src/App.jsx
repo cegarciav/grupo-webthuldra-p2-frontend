@@ -19,7 +19,7 @@ function App() {
           <ul>
             <li id="logo">
               <a href="/">
-                <img src="/webthuldra_logo.png" alt="Ícono de un copo de nieve." />
+                <img src="/webthuldra_logo.png" alt="Copo de nieve, logo de Webthuldra" />
               </a>
             </li>
           </ul>

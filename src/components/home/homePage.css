@@ -3,9 +3,12 @@
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-evenly;
+  padding-top: 4.2em;
 }
 
-#home-page article {
+#home-page .main-link {
+  text-align: center;
+  text-decoration: none;
   background-color: #25559a;
   color: azure;
   height: 30vh;
@@ -14,14 +17,13 @@
   flex-direction: column;
   justify-content: center;
   border-radius: 8vh;
-  margin-bottom: 5vh;
   box-shadow: 1vh 1vh 2vh #0d1f39;
-}
-
-#home-page article:hover{
-  background-color: #0d1f39;
-}
-
-#home-page h1 {
+  font-size: 2em;
+  font-weight: bold;
   margin: 0 auto;
+  margin-bottom: 5vh;
+}
+
+#home-page .main-link:hover{
+  background-color: #0d1f39;
 }

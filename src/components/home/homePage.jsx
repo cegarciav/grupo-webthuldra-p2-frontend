@@ -1,19 +1,24 @@
 import React from 'react';
+import {
+  Link,
+} from 'react-router-dom';
 import './homePage.css';
 
 function HomePage() {
   return (
     <main id="home-page">
-      <article>
-        <h1>
-          Explorar tiendas
-        </h1>
-      </article>
-      <article>
-        <h1>
-          Registrarse
-        </h1>
-      </article>
+      <Link
+        to="/stores"
+        className="main-link"
+      >
+        Explorar tiendas
+      </Link>
+      <Link
+        to="/signup"
+        className="main-link"
+      >
+        Registrarse
+      </Link>
     </main>
   );
 }

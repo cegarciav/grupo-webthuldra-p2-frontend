@@ -15,7 +15,7 @@ function StoresRouter() {
 
   return (
     <Switch>
-      <Route exact path="/">
+      <Route exact path={path}>
         <StoresList />
       </Route>
       <Route path={`${path}/new`}>
