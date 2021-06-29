@@ -37,12 +37,13 @@ ProductProfileSummary.propTypes = {
   name: PropTypes.string.isRequired,
   id: PropTypes.string.isRequired,
   price: PropTypes.number.isRequired,
-  unit: PropTypes.string.isRequired,
+  unit: PropTypes.string,
   image: PropTypes.string,
   storeId: PropTypes.string.isRequired,
 };
 
 ProductProfileSummary.defaultProps = {
+  unit: null,
   image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSSsfKHi3iw8M4r6es253TBy0sH_i4D9WSrt23oHNSB5eygGMStKIkKETHNxd2DGhOUHo4&usqp=CAU',
 };
 

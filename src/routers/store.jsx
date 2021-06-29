@@ -4,6 +4,7 @@ import {
   Route,
   useRouteMatch,
 } from 'react-router-dom';
+import ProductsRouter from './product';
 import StoresList from '../components/stores/storesList/storesList';
 import StoreProfile from '../components/stores/storeProfile/storeProfile';
 import StoreUpdate from '../components/stores/storeUpdate/storeUpdate';
@@ -26,6 +27,9 @@ function StoresRouter() {
       </Route>
       <Route path={`${path}/:storeId/delete`}>
         <StoreDelete />
+      </Route>
+      <Route path={`${path}/:storeId/products`}>
+        <ProductsRouter />
       </Route>
       <Route path={`${path}/:storeId`}>
         <StoreProfile />

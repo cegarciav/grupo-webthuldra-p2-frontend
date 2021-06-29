@@ -2,6 +2,7 @@ import React from 'react';
 import { useParams } from 'react-router-dom';
 import UserProfileSummary from '../../users/userProfile/userProfileSummary';
 import ProductsList from '../../products/productsList/productsList';
+import CommentsList from '../../comments/commentsList/commentsList';
 
 const StoreProfile = () => {
   const { storeId } = useParams();
@@ -19,17 +20,6 @@ const StoreProfile = () => {
     lastName: 'Apellido',
     email: 'test@test.com',
   };
-  /* const comments = [{
-    id: '317ff996-34aa-4fb6-90ed-ea57a74d8642',
-    text: 'Some nice comment about the store',
-    grade: 5,
-    reviewerId: '310ff996-34aa-4fb6-90ed-ea57a74d8642',
-  }, {
-    id: '327ff996-34aa-4fb6-90ed-ea57a74d8642',
-    text: 'Some bad comment about the store',
-    grade: 0,
-    reviewerId: '311ff996-34aa-4fb6-90ed-ea57a74d8642',
-  }]; */
 
   return (
     <main>
@@ -49,6 +39,9 @@ const StoreProfile = () => {
             id={owner.id}
             name={`${owner.firstName} ${owner.lastName}`}
             email={owner.email}
+          />
+          <CommentsList
+            storeId={storeId}
           />
         </aside>
         <section className="products-in-store">
