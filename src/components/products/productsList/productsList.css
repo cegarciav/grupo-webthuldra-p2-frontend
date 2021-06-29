@@ -14,6 +14,10 @@
   max-width: 100%;
 }
 
+.products-in-store {
+  flex-grow: 3;
+}
+
 .products-in-store main {
   padding-top: 0;
   width: 100%;
