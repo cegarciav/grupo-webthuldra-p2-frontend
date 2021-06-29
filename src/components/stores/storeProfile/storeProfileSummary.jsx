@@ -13,22 +13,21 @@ function StoreProfileSummary({
   description,
 }) {
   return (
-    <li className="store-summary">
-      <Link
-        to={`/stores/${id}`}
-      >
-        <article>
-          <h1>{ name }</h1>
-          <section>
-            <img
-              src={image}
-              alt={description}
-            />
-          </section>
-          <p>{ `Dirección: ${address}` }</p>
-        </article>
-      </Link>
-    </li>
+    <Link
+      to={`/stores/${id}`}
+      className="store-summary"
+    >
+      <article>
+        <h1>{ name }</h1>
+        <section>
+          <img
+            src={image}
+            alt={description}
+          />
+        </section>
+        <p>{ `Dirección: ${address}` }</p>
+      </article>
+    </Link>
   );
 }
 

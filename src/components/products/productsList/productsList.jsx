@@ -37,9 +37,8 @@ function ProductsList({ storeId }) {
   const productComponents = products
     .filter((product) => product.storeId === storeId)
     .map((product) => (
-      <li>
+      <li key={product.id}>
         <ProductProfileSummary
-          key={product.id}
           id={product.id}
           name={product.name}
           stock={product.stock}

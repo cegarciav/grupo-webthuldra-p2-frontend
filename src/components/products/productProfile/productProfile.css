@@ -1,9 +1,4 @@
 .product-summary {
-  margin: 1vh;
-  max-width: 100%;
-}
-
-.product-summary a {
   text-align: center;
   text-decoration: none;
   background-color: azure;

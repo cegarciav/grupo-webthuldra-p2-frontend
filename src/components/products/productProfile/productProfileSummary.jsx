@@ -14,22 +14,21 @@ function ProductProfileSummary({
   storeId,
 }) {
   return (
-    <li className="product-summary">
-      <Link
-        to={`/stores/${storeId}/products/${id}`}
-      >
-        <article>
-          <h1>{ name }</h1>
-          <section>
-            <img
-              src={image}
-              alt={name}
-            />
-          </section>
-          <p>{ `Precio: $${price} ${unit || 'c/u'}` }</p>
-        </article>
-      </Link>
-    </li>
+    <Link
+      to={`/stores/${storeId}/products/${id}`}
+      className="product-summary"
+    >
+      <article>
+        <h1>{ name }</h1>
+        <section>
+          <img
+            src={image}
+            alt={name}
+          />
+        </section>
+        <p>{ `Precio: $${price} ${unit || 'c/u'}` }</p>
+      </article>
+    </Link>
   );
 }
 

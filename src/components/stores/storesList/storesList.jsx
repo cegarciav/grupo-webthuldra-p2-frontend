@@ -27,14 +27,16 @@ function StoresList() {
   }];
 
   const storeComponents = stores.map((store) => (
-    <StoreProfileSummary
-      key={store.id}
-      id={store.id}
-      name={store.name}
-      address={store.address}
-      description={store.description}
-      image={store.image}
-    />
+    <li>
+      <StoreProfileSummary
+        key={store.id}
+        id={store.id}
+        name={store.name}
+        address={store.address}
+        description={store.description}
+        image={store.image}
+      />
+    </li>
   ));
   return (
     <main>
