@@ -48,3 +48,64 @@
   padding: 1.5vh 0;
   margin: 0 auto;
 }
+
+.user-main-info {
+  height: 70vh;
+}
+
+.user-main-info figure {
+  overflow-y: hidden;
+  border-bottom-left-radius: 1.5em;
+  border-bottom-right-radius: 1.5em;
+  width: 100%;
+  margin: 0;
+  height: 70%;
+}
+
+.user-header-content {
+  border: 4px solid azure;
+  border-radius: 10px;
+  background: linear-gradient(
+    150deg,
+    #25559a,
+   #ace
+  );
+  height: max-content;
+  margin-top: 0.5em;
+}
+
+.user-header-content .profile-pic {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: row;
+  margin: 0 auto;
+}
+
+.user-header-content .profile-pic img{
+  margin-right: 1em;
+  width: 200px;
+  border: 4px solid azure;
+  height: auto;
+  border-radius: 50%/50%;
+}
+
+.user-header-content .profile-pic figcaption h1, h2, h4 {
+  margin: 0;
+  padding: 1%;
+  padding-left: 0;
+  color: black;
+  font-weight: normal;
+}
+
+.user-main-profile {
+  display: flex;
+  flex-wrap: wrap;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.user-info {
+  flex-grow: 1;
+  padding-right: 1em;
+  box-sizing: border-box;
+}

@@ -27,6 +27,11 @@ function App() {
                 Stores
               </a>
             </li>
+            <li>
+              <a href="/users/my-profile">
+                Profile
+              </a>
+            </li>
           </ul>
         </nav>
       </header>

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import CommentProfileSummary from '../commentProfile/commentProfileSummary';
 import './commentsList.css';
 
-function CommentsList({ storeId }) {
+function CommentsList({ storeId, reviewerId }) {
   const comments = [{
     id: '317ff996-34aa-4fb6-90ed-ea57a74d8642',
     text: 'Some nice comment about the store but so looooooooooooooooooong',
@@ -20,16 +20,17 @@ function CommentsList({ storeId }) {
     text: 'Some bad comment about the store',
     grade: 0,
     storeId: '207ff996-34aa-4fb6-90ed-ea57a74d8642',
-    reviewerId: '311ff996-34aa-4fb6-90ed-ea57a74d8642',
+    reviewerId: '8e67c890-e293-4c8f-af99-1ea3e89ad4c5',
     reviewer: {
-      id: '311ff996-34aa-4fb6-90ed-ea57a74d8642',
+      id: '8e67c890-e293-4c8f-af99-1ea3e89ad4c5',
       firstName: 'Nombre 2',
       lastName: 'Apellido 2',
     },
   }];
 
   const commentComponents = comments
-    .filter((comment) => comment.storeId === storeId)
+    .filter((comment) => (storeId ? (comment.storeId === storeId) : true))
+    .filter((comment) => (reviewerId ? (comment.reviewerId !== reviewerId) : true))
     .map((comment) => (
       <li key={comment.id}>
         <CommentProfileSummary
@@ -42,6 +43,7 @@ function CommentsList({ storeId }) {
         />
       </li>
     ));
+
   return (
     <main className="comments-container">
       <h4>Comentarios</h4>
@@ -53,7 +55,13 @@ function CommentsList({ storeId }) {
 }
 
 CommentsList.propTypes = {
-  storeId: PropTypes.string.isRequired,
+  storeId: PropTypes.string,
+  reviewerId: PropTypes.string,
+};
+
+CommentsList.defaultProps = {
+  storeId: null,
+  reviewerId: null,
 };
 
 export default CommentsList;

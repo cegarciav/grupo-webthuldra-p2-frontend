@@ -1,0 +1,28 @@
+.deals-container {
+    padding-top: 0.3em;
+    padding-bottom: 0.3em;
+    width: 60vh;
+    background-color: azure;
+    margin: 0 auto;
+    border-radius: 1em;
+    box-shadow: 0.5vh 0.5vh 2vh #0d1f39;
+    max-height: 60vh;
+  }
+  
+  .deals-container h1 {
+    font-weight: bold;
+  }
+  
+  .deals-container h4 {
+    margin: 0 auto;
+    text-align: center;
+  }
+  
+  .deals-container ul {
+    list-style: none;
+    padding-left: 0;
+  }
+  
+  .deals-container li {
+    padding: 0 0.5em;
+  }
