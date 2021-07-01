@@ -80,7 +80,8 @@ footer ul li a {
 
 main {
   margin: 0 auto;
-  margin-top: 4.5em;
+  padding-top: 3.8em;
+  padding-bottom: 3.8em;
   display: block;
   width: 90%;
 }

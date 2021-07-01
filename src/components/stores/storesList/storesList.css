@@ -1,0 +1,14 @@
+.stores-list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  list-style: none;
+  padding: 0%;
+  width: 100%;
+}
+
+.stores-list li {
+  margin: 1vh;
+  max-width: 100%;
+}
