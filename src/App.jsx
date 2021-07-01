@@ -22,6 +22,11 @@ function App() {
                 <img src="/webthuldra_logo.png" alt="Copo de nieve, logo de Webthuldra" />
               </a>
             </li>
+            <li>
+              <a href="/stores">
+                Stores
+              </a>
+            </li>
           </ul>
         </nav>
       </header>
