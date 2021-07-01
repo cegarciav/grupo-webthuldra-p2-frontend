@@ -25,6 +25,8 @@ const ProductProfile = () => {
           Ir a la tienda
         </Link>
       </section>
+      <button type="button">Editar producto</button>
+      <button type="button">Eliminar producto</button>
       <section className="product-card">
         <figure>
           <img src={productInfo.image} alt={productInfo.name} />
@@ -33,6 +35,8 @@ const ProductProfile = () => {
           <h1>{productInfo.name}</h1>
           <h3>{`$${productInfo.price} ${productInfo.unit || 'c/u'}`}</h3>
           <h4>{`Disponibles: ${productInfo.stock} ${productInfo.unit || 'unidades'}`}</h4>
+          <input type="number" min="0" max={productInfo.stock} />
+          <button type="button">Comprar</button>
         </article>
       </section>
     </main>

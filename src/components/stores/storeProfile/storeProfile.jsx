@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import UserProfileSummary from '../../users/userProfile/userProfileSummary';
 import ProductsList from '../../products/productsList/productsList';
 import CommentsList from '../../comments/commentsList/commentsList';
+import DealsList from '../../deals/dealsList/dealsList';
 
 const StoreProfile = () => {
   const { storeId } = useParams();
@@ -33,6 +34,8 @@ const StoreProfile = () => {
         </main>
       </section>
       <hr className="section-divisor" />
+      <button type="button">Editar tienda</button>
+      <button type="button">Eliminar tienda</button>
       <section className="store-main-profile">
         <aside className="store-info">
           <UserProfileSummary
@@ -43,8 +46,13 @@ const StoreProfile = () => {
           <CommentsList
             storeId={storeId}
           />
+          <DealsList
+            storeId={storeId}
+          />
         </aside>
         <section className="products-in-store">
+          <button type="button">Añadir producto</button>
+          <button type="button">Eliminar producto</button>
           <ProductsList storeId={storeId} />
         </section>
       </section>

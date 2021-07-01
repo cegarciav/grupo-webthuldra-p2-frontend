@@ -6,13 +6,11 @@ import {
 import './commentProfile.css';
 
 function CommentProfileSummary({
-  id,
   text,
   grade,
   reviewerName,
   reviewerId,
   reviewerImage,
-  storeId,
 }) {
   return (
     <article className="comment-summary">
@@ -30,24 +28,18 @@ function CommentProfileSummary({
         </Link>
       </section>
       <section className="comment-text">
-        <Link
-          to={`/stores/${storeId}/comments/${id}`}
-        >
-          {text.length > 50 ? `${text.substring(0, 50)}... view more` : text}
-        </Link>
+        {text}
       </section>
     </article>
   );
 }
 
 CommentProfileSummary.propTypes = {
-  id: PropTypes.string.isRequired,
   text: PropTypes.string.isRequired,
   grade: PropTypes.number,
   reviewerName: PropTypes.string.isRequired,
   reviewerId: PropTypes.string.isRequired,
   reviewerImage: PropTypes.string,
-  storeId: PropTypes.string.isRequired,
 };
 
 CommentProfileSummary.defaultProps = {

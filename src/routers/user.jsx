@@ -8,6 +8,7 @@ import UsersList from '../components/users/usersList/usersList';
 import UserProfile from '../components/users/userProfile/userProfile';
 import UserUpdate from '../components/users/userUpdate/userUpdate';
 import UserDelete from '../components/users/userDelete/userDelete';
+import DealsRouter from './deals';
 
 function UsersRouter() {
   const { path } = useRouteMatch();
@@ -19,6 +20,9 @@ function UsersRouter() {
       </Route>
       <Route path={`${path}/:userId/delete`}>
         <UserDelete />
+      </Route>
+      <Route path={`${path}/:userId/deals`}>
+        <DealsRouter />
       </Route>
       <Route path={`${path}/:userId`}>
         <UserProfile />
