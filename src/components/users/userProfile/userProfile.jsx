@@ -40,6 +40,8 @@ const UserProfile = () => {
             <h4>{`Contacto: ${userInfo.email}`}</h4>
           </figcaption>
         </figure>
+        <button type="button">Editar Perfil</button>
+        <button type="button">Eliminar Perfil</button>
       </section>
 
       <section className="user-main-profile">
@@ -52,6 +54,7 @@ const UserProfile = () => {
           />
         </aside>
         <section className="products-in-store">
+          <button type="button">Crear tienda</button>
           <StoresList
             ownerId={userInfo.id}
           />

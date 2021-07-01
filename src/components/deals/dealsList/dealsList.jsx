@@ -42,7 +42,7 @@ function DealsList({ storeId, userId }) {
           status={deal.status}
           storeName={deal.store.name}
           storeId={deal.storeId}
-          customerId={deal.customerId}
+          customerId={userId ? deal.customerId : null}
         />
       </li>
     ));

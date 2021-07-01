@@ -50,6 +50,7 @@ function CommentsList({ storeId, reviewerId }) {
       <ul className="comments-list">
         {commentComponents}
       </ul>
+      <button type="button">Escribir un comentario</button>
     </main>
   );
 }

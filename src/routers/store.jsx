@@ -10,6 +10,7 @@ import StoreProfile from '../components/stores/storeProfile/storeProfile';
 import StoreUpdate from '../components/stores/storeUpdate/storeUpdate';
 import StoreDelete from '../components/stores/storeDelete/storeDelete';
 import StoreNew from '../components/stores/storeNew/storeNew';
+import DealsRouter from './deals';
 
 function StoresRouter() {
   const { path } = useRouteMatch();
@@ -27,6 +28,9 @@ function StoresRouter() {
       </Route>
       <Route path={`${path}/:storeId/delete`}>
         <StoreDelete />
+      </Route>
+      <Route path={`${path}/:storeId/deals`}>
+        <DealsRouter />
       </Route>
       <Route path={`${path}/:storeId/products`}>
         <ProductsRouter />

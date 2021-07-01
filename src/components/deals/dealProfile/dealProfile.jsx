@@ -70,6 +70,8 @@ const DealProfile = () => {
 
   return (
     <main>
+      <button type="button">Editar deal</button>
+      <button type="button">Eliminar deal</button>
       <section className="store-main-profile">
         <aside className="store-info">
           <h1>Productos a comprar</h1>

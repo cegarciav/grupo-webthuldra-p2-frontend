@@ -30,7 +30,7 @@ function DealProfileSummary({
       </section>
       <section className="comment-text">
         <Link
-          to={`/users/${customerId}/deals/${id}`}
+          to={customerId ? `/users/${customerId}/deals/${id}` : `/stores/${storeId}/deals/${id}`}
         >
           {storeName}
         </Link>
