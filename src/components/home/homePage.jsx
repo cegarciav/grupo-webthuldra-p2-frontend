@@ -19,6 +19,12 @@ function HomePage() {
       >
         Registrarse
       </Link>
+      <Link
+        to="/login"
+        className="main-link"
+      >
+        Iniciar sesión
+      </Link>
     </main>
   );
 }
