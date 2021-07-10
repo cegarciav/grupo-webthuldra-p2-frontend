@@ -10,7 +10,7 @@ function ProductProfileSummary({
   name,
   price,
   unit,
-  image,
+  picture,
   storeId,
 }) {
   return (
@@ -22,7 +22,7 @@ function ProductProfileSummary({
         <h1>{ name }</h1>
         <section>
           <img
-            src={image}
+            src={picture || '/default_product_picture.png'}
             alt={name}
           />
         </section>
@@ -37,13 +37,13 @@ ProductProfileSummary.propTypes = {
   id: PropTypes.string.isRequired,
   price: PropTypes.number.isRequired,
   unit: PropTypes.string,
-  image: PropTypes.string,
+  picture: PropTypes.string,
   storeId: PropTypes.string.isRequired,
 };
 
 ProductProfileSummary.defaultProps = {
   unit: null,
-  image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSSsfKHi3iw8M4r6es253TBy0sH_i4D9WSrt23oHNSB5eygGMStKIkKETHNxd2DGhOUHo4&usqp=CAU',
+  picture: undefined,
 };
 
 export default ProductProfileSummary;
