@@ -1,0 +1,58 @@
+.modal-background {
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  left: 0;
+  top: 0;
+  filter: blur(8px);
+  z-index: 5;
+  background-color: #ace;
+  opacity: 0.8;
+}
+
+.modal-info {
+  position: fixed;
+  text-align: center;
+  background-color: azure;
+  color: black;
+  height: 50%;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: 1em;
+  box-shadow: 0.5vh 0.5vh 2vh #0d1f39;
+  z-index: 10;
+  margin: 0 auto;
+  left: 0;
+  right: 0;
+}
+
+/*
+  Button adapted from https://codepen.io/Ildar/pen/svpdx example
+*/
+
+.close-button {
+  opacity: 0.5;
+  cursor:pointer;
+}
+
+.close-button:after, .close-button:before {
+  content:"";
+  height: 20px;
+  width: 20px;
+  border-top: 1px solid #000;
+  position: absolute;
+  top: 12px;
+  transform: rotate(-45deg);
+  right: -2px;
+}
+
+.close-button:before {
+  transform: rotate(45deg);
+  right:12px;  
+}
+  
+.close-button:hover {
+    opacity: 1;
+}
