@@ -8,7 +8,7 @@ import './userProfile.css';
 function UserProfileSummary({
   name,
   id,
-  image,
+  picture,
   email,
 }) {
   return (
@@ -20,7 +20,7 @@ function UserProfileSummary({
         <h1>{ name }</h1>
         <section>
           <img
-            src={image}
+            src={picture || '/default_profile_picture.png'}
             alt={name}
           />
         </section>
@@ -33,12 +33,12 @@ function UserProfileSummary({
 UserProfileSummary.propTypes = {
   name: PropTypes.string.isRequired,
   id: PropTypes.string.isRequired,
-  image: PropTypes.string,
+  picture: PropTypes.string,
   email: PropTypes.string.isRequired,
 };
 
 UserProfileSummary.defaultProps = {
-  image: 'https://st.depositphotos.com/2101611/3925/v/600/depositphotos_39258143-stock-illustration-businessman-avatar-profile-picture.jpg',
+  picture: undefined,
 };
 
 export default UserProfileSummary;
