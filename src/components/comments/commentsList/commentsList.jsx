@@ -1,36 +1,45 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import CommentProfileSummary from '../commentProfile/commentProfileSummary';
+import ErrorsModal from '../../common/errorsModal';
+import { apiGet } from '../../../apiService';
 import './commentsList.css';
 
 function CommentsList({ storeId, reviewerId }) {
-  const comments = [{
-    id: '317ff996-34aa-4fb6-90ed-ea57a74d8642',
-    text: 'Some nice comment about the store but so looooooooooooooooooong',
-    grade: 5,
-    storeId: '207ff996-34aa-4fb6-90ed-ea57a74d8642',
-    reviewerId: '310ff996-34aa-4fb6-90ed-ea57a74d8642',
-    reviewer: {
-      id: '310ff996-34aa-4fb6-90ed-ea57a74d8642',
-      firstName: 'Nombre 2',
-      lastName: 'Apellido 2',
-    },
-  }, {
-    id: '327ff996-34aa-4fb6-90ed-ea57a74d8642',
-    text: 'Some bad comment about the store',
-    grade: 0,
-    storeId: '207ff996-34aa-4fb6-90ed-ea57a74d8642',
-    reviewerId: '8e67c890-e293-4c8f-af99-1ea3e89ad4c5',
-    reviewer: {
-      id: '8e67c890-e293-4c8f-af99-1ea3e89ad4c5',
-      firstName: 'Nombre 2',
-      lastName: 'Apellido 2',
-    },
-  }];
+  const [comments, setComments] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [errors, setErrors] = useState(null);
+
+  useEffect(async () => {
+    setLoading(true);
+    let commentsResponse;
+    if (storeId) {
+      commentsResponse = await apiGet(`/stores/${storeId}/comments`);
+    } else if (reviewerId) {
+      commentsResponse = await apiGet(`/users/${reviewerId}/comments`);
+    }
+    setLoading(false);
+    if (commentsResponse.data && commentsResponse.statusCode === 200) {
+      setComments(commentsResponse.data);
+    } else if (commentsResponse.type === 'response' && commentsResponse.errors) {
+      setErrors(commentsResponse.errors);
+    } else {
+      setErrors([commentsResponse]);
+    }
+  }, []);
+
+  if (loading) {
+    return (
+      <main>
+        <h1>Cargando lista de Comentarios...</h1>
+      </main>
+    );
+  }
+  if (errors) {
+    return <ErrorsModal errors={errors} />;
+  }
 
   const commentComponents = comments
-    .filter((comment) => (storeId ? (comment.storeId === storeId) : true))
-    .filter((comment) => (reviewerId ? (comment.reviewerId !== reviewerId) : true))
     .map((comment) => (
       <li key={comment.id}>
         <CommentProfileSummary
@@ -38,7 +47,7 @@ function CommentsList({ storeId, reviewerId }) {
           text={comment.text}
           grade={comment.grade}
           reviewerName={`${comment.reviewer.firstName} ${comment.reviewer.firstName}`}
-          reviewerId={comment.reviewer.id}
+          reviewerId={comment.reviewerId}
           storeId={comment.storeId}
         />
       </li>
@@ -50,7 +59,7 @@ function CommentsList({ storeId, reviewerId }) {
       <ul className="comments-list">
         {commentComponents}
       </ul>
-      <button type="button">Escribir un comentario</button>
+      {storeId ? <a role="button" href="/">Escribir un comentario</a> : null}
     </main>
   );
 }

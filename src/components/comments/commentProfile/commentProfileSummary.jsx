@@ -10,7 +10,7 @@ function CommentProfileSummary({
   grade,
   reviewerName,
   reviewerId,
-  reviewerImage,
+  reviewerPicture,
 }) {
   return (
     <article className="comment-summary">
@@ -20,7 +20,7 @@ function CommentProfileSummary({
         >
           <figure>
             <img
-              src={reviewerImage}
+              src={reviewerPicture || '/default_profile_picture.png'}
               alt={reviewerName}
             />
           </figure>
@@ -39,12 +39,12 @@ CommentProfileSummary.propTypes = {
   grade: PropTypes.number,
   reviewerName: PropTypes.string.isRequired,
   reviewerId: PropTypes.string.isRequired,
-  reviewerImage: PropTypes.string,
+  reviewerPicture: PropTypes.string,
 };
 
 CommentProfileSummary.defaultProps = {
-  grade: null,
-  reviewerImage: 'https://st.depositphotos.com/2101611/3925/v/600/depositphotos_39258143-stock-illustration-businessman-avatar-profile-picture.jpg',
+  grade: undefined,
+  reviewerPicture: undefined,
 };
 
 export default CommentProfileSummary;
