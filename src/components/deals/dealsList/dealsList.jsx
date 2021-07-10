@@ -1,40 +1,45 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import DealProfileSummary from '../dealProfile/dealProfileSummary';
+import ErrorsModal from '../../common/errorsModal';
+import { apiGet } from '../../../apiService';
 import './dealsList.css';
 
 function DealsList({ storeId, userId }) {
-  const deals = [{
-    id: '317ff996-34aa-4fb6-90ed-ea57a74d8642',
-    status: 'abierto',
-    storeId: '207ff996-34aa-4fb6-90ed-ea57a74d8642',
-    customerId: '8e67c890-e293-4c8f-af99-1ea3e89ad4c5',
-    store: {
-      id: '207ff996-34aa-4fb6-90ed-ea57a74d8642',
-      address: 'Dirección 1',
-      name: 'Una tienda 1',
-      image: 'https://cdn.geekwire.com/wp-content/uploads/2020/02/amzngo1.jpeg',
-      description: 'Descripción de la tienda 1',
-      ownerId: 'ceeaa745-fdc1-4679-89c0-bb1a15f36f43',
-    },
-  }, {
-    id: '0bc54f87-6d67-41a2-a77d-16c629e6155e',
-    status: 'completado',
-    storeId: '207ff996-34aa-4fb6-90ed-ea57a74d8642',
-    customerId: '8e67c890-e293-4c8f-af99-1ea3e89ad4c5',
-    store: {
-      id: '207ff996-34aa-4fb6-90ed-ea57a74d8642',
-      address: 'Dirección 1',
-      name: 'Una tienda 1',
-      image: 'https://cdn.geekwire.com/wp-content/uploads/2020/02/amzngo1.jpeg',
-      description: 'Descripción de la tienda 1',
-      ownerId: 'ceeaa745-fdc1-4679-89c0-bb1a15f36f43',
-    },
-  }];
+  const [deals, setDeals] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [errors, setErrors] = useState(null);
+
+  useEffect(async () => {
+    setLoading(true);
+    let dealsResponse;
+    if (storeId) {
+      dealsResponse = await apiGet(`/stores/${storeId}/deals`);
+    } else if (userId) {
+      dealsResponse = await apiGet(`/users/${userId}/deals`);
+    }
+    setLoading(false);
+    if (dealsResponse.data && dealsResponse.statusCode === 200) {
+      setDeals(dealsResponse.data);
+    } else if (dealsResponse.type === 'response' && dealsResponse.errors) {
+      setErrors(dealsResponse.errors);
+    } else {
+      setErrors([dealsResponse]);
+    }
+  }, []);
+
+  if (loading) {
+    return (
+      <main>
+        <h1>Cargando lista de acuerdos de compra...</h1>
+      </main>
+    );
+  }
+  if (errors) {
+    return <ErrorsModal errors={errors} />;
+  }
 
   const dealComponents = deals
-    .filter((deal) => (storeId ? (deal.storeId === storeId) : true))
-    .filter((deal) => (userId ? (deal.customerId === userId) : true))
     .map((deal) => (
       <li key={deal.id}>
         <DealProfileSummary
@@ -42,7 +47,6 @@ function DealsList({ storeId, userId }) {
           status={deal.status}
           storeName={deal.store.name}
           storeId={deal.storeId}
-          customerId={userId ? deal.customerId : null}
         />
       </li>
     ));
@@ -62,8 +66,8 @@ DealsList.propTypes = {
 };
 
 DealsList.defaultProps = {
-  storeId: null,
-  userId: null,
+  storeId: undefined,
+  userId: undefined,
 };
 
 export default DealsList;
