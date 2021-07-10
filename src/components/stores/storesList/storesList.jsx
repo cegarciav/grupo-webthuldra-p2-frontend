@@ -1,34 +1,52 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import StoreProfileSummary from '../storeProfile/storeProfileSummary';
+import ErrorsModal from '../../common/errorsModal';
+import { apiGet } from '../../../apiService';
 import './storesList.css';
 
 function StoresList({ ownerId }) {
-  const stores = [{
-    id: '207ff996-34aa-4fb6-90ed-ea57a74d8642',
-    address: 'Dirección 1',
-    name: 'Una tienda 1',
-    image: 'https://cdn.geekwire.com/wp-content/uploads/2020/02/amzngo1.jpeg',
-    description: 'Descripción de la tienda 1',
-    ownerId: '8e67c890-e293-4c8f-af99-1ea3e89ad4c5',
-  }, {
-    id: '207ff996-34aa-4fb6-90ed-ea57a74d8643',
-    address: 'Dirección 2',
-    name: 'Una tienda 2',
-    image: 'https://cdn-prod.scalefast.com/public/assets/themes/bandai-namco-store-eu/images/new-icons/STORE-Orange.png',
-    description: 'Descripción de la tienda 2',
-    ownerId: 'ceeaa745-fdc1-4679-89c0-bb1a15f36f44',
-  }, {
-    id: '207ff996-34aa-4fb6-90ed-ea57a74d8644',
-    address: 'Dirección 3',
-    name: 'Una tienda 3',
-    image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ5xmqqf3t_zKomZB_LE3K6V_HWVEOoKZohQQ&usqp=CAU',
-    description: 'Descripción de la tienda 3',
-    ownerId: 'ceeaa745-fdc1-4679-89c0-bb1a15f36f45',
-  }];
+  const [stores, setStores] = useState([]);
+  const [storeFilter, setStoreFilter] = useState('');
+  const [loading, setLoading] = useState(false);
+  const [errors, setErrors] = useState(null);
+
+  const filterFunction = (store) => {
+    if (storeFilter) {
+      const regexValue = new RegExp(storeFilter, 'i');
+      return store.address.match(regexValue)
+        || store.name.match(regexValue)
+        || store.description.match(regexValue);
+    }
+    return true;
+  };
+
+  useEffect(async () => {
+    setLoading(true);
+    const storesResponse = await apiGet('/stores', ownerId ? { ownerId } : {});
+    setLoading(false);
+    if (storesResponse.data && storesResponse.statusCode === 200) {
+      setStores(storesResponse.data);
+    } else if (storesResponse.type === 'response' && storesResponse.errors) {
+      setErrors(storesResponse.errors);
+    } else {
+      setErrors([storesResponse]);
+    }
+  }, []);
+
+  if (loading) {
+    return (
+      <main>
+        <h1>Cargando lista de tiendas...</h1>
+      </main>
+    );
+  }
+  if (errors) {
+    return <ErrorsModal errors={errors} />;
+  }
 
   const storeComponents = stores
-    .filter((store) => (ownerId ? (store.ownerId === ownerId) : true))
+    .filter(filterFunction)
     .map((store) => (
       <li key={store.id}>
         <StoreProfileSummary
@@ -36,13 +54,23 @@ function StoresList({ ownerId }) {
           name={store.name}
           address={store.address}
           description={store.description}
-          image={store.image}
+          picture={store.picture}
         />
       </li>
     ));
+
   return (
     <main>
       <h1>Lista de tiendas</h1>
+      <section className="searchbar-container">
+        <input
+          type="text"
+          className="main-searchbar"
+          placeholder="Buscar tiendas"
+          value={storeFilter}
+          onChange={(e) => { setStoreFilter(e.target.value); }}
+        />
+      </section>
       <ul className="stores-list">
         {storeComponents}
       </ul>
@@ -55,7 +83,7 @@ StoresList.propTypes = {
 };
 
 StoresList.defaultProps = {
-  ownerId: null,
+  ownerId: undefined,
 };
 
 export default StoresList;
