@@ -1,14 +1,8 @@
 import React from 'react';
 import {
   BrowserRouter as Router,
-  Switch,
-  Route,
 } from 'react-router-dom';
-import UsersRouter from './routers/user';
-import StoresRouter from './routers/store';
-import SignUp from './components/users/signup/signUp';
-import LogIn from './components/users/login/logIn';
-import HomePage from './components/home/homePage';
+import MainRouter from './routers/index';
 import './App.css';
 
 function App() {
@@ -24,35 +18,19 @@ function App() {
             </li>
             <li>
               <a href="/stores">
-                Stores
+                Tiendas
               </a>
             </li>
             <li>
               <a href="/users/my-profile">
-                Profile
+                Perfil
               </a>
             </li>
           </ul>
         </nav>
       </header>
       <Router>
-        <Switch>
-          <Route exact path="/">
-            <HomePage />
-          </Route>
-          <Route path="/signup">
-            <SignUp />
-          </Route>
-          <Route path="/login">
-            <LogIn />
-          </Route>
-          <Route path="/users">
-            <UsersRouter />
-          </Route>
-          <Route path="/stores">
-            <StoresRouter />
-          </Route>
-        </Switch>
+        <MainRouter />
       </Router>
       <footer>
         <ul>
