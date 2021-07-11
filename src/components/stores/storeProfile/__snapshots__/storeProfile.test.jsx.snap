@@ -1,0 +1,229 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`StoreProfile When user is not logged-in renders the profile of the store 1`] = `
+<main>
+  <section
+    className="store-main-info"
+  >
+    <figure>
+      <img
+        alt="Description 1"
+        src="/default_store_picture.png"
+      />
+    </figure>
+    <main>
+      <h1>
+        Name 1
+      </h1>
+      <h4>
+        Description 1
+      </h4>
+    </main>
+  </section>
+  <hr
+    className="section-divisor"
+  />
+  <button
+    type="button"
+  >
+    Editar tienda
+  </button>
+  <button
+    type="button"
+  >
+    Eliminar tienda
+  </button>
+  <section
+    className="store-main-profile"
+  >
+    <aside
+      className="store-info"
+    >
+      <a
+        className="user-summary"
+        href="/users/7d13c742-cd2d-45b7-9866-20dbb0eaa2e9"
+        onClick={[Function]}
+      >
+        <article>
+          <h1>
+            Owner Name Owner Lastname
+          </h1>
+          <section>
+            <img
+              alt="Owner Name Owner Lastname"
+              src="/default_profile_picture.png"
+            />
+          </section>
+          <p>
+            Contacto: owner@email.com
+          </p>
+        </article>
+      </a>
+      <main
+        className="comments-container"
+      >
+        <h4>
+          Comentarios
+        </h4>
+        <ul
+          className="comments-list"
+        >
+          <li>
+            <article
+              className="comment-summary"
+            >
+              <section
+                className="user-info"
+              >
+                <a
+                  href="/users/96ab7b63-915e-442b-b83f-e0962bd2c8d8"
+                  onClick={[Function]}
+                >
+                  <figure>
+                    <img
+                      alt="Reviewer Name Reviewer Name"
+                      src="/default_profile_picture.png"
+                    />
+                  </figure>
+                  <p>
+                    4/5
+                  </p>
+                </a>
+              </section>
+              <section
+                className="comment-text"
+              >
+                Possitive comment
+              </section>
+            </article>
+          </li>
+          <li>
+            <article
+              className="comment-summary"
+            >
+              <section
+                className="user-info"
+              >
+                <a
+                  href="/users/96ab7b63-915e-442b-b83f-e0962bd2c8d8"
+                  onClick={[Function]}
+                >
+                  <figure>
+                    <img
+                      alt="Reviewer Name 2 Reviewer Name 2"
+                      src="/default_profile_picture.png"
+                    />
+                  </figure>
+                  <p>
+                    1/5
+                  </p>
+                </a>
+              </section>
+              <section
+                className="comment-text"
+              >
+                Negative comment
+              </section>
+            </article>
+          </li>
+        </ul>
+        <a
+          href="/"
+          role="button"
+        >
+          Escribir un comentario
+        </a>
+      </main>
+    </aside>
+    <section
+      className="products-in-store"
+    >
+      <button
+        type="button"
+      >
+        Añadir producto
+      </button>
+      <button
+        type="button"
+      >
+        Eliminar producto
+      </button>
+      <main>
+        <h1>
+          Lista de productos disponibles
+        </h1>
+        <ul
+          className="products-list"
+        >
+          <li>
+            <a
+              className="product-summary"
+              href="/stores/6f4e5985-2ff8-4118-bbaf-e6004d757c13/products/a9aa09e7-83f8-4e95-b551-273cedf0afe3"
+              onClick={[Function]}
+            >
+              <article>
+                <h1>
+                  Product 1
+                </h1>
+                <section>
+                  <img
+                    alt="Product 1"
+                    src="/default_product_picture.png"
+                  />
+                </section>
+                <p>
+                  Precio: $500 Unidad
+                </p>
+              </article>
+            </a>
+          </li>
+          <li>
+            <a
+              className="product-summary"
+              href="/stores/6f4e5985-2ff8-4118-bbaf-e6004d757c13/products/a3de523e-a264-4479-b1e9-d1da5d228caf"
+              onClick={[Function]}
+            >
+              <article>
+                <h1>
+                  Product 2
+                </h1>
+                <section>
+                  <img
+                    alt="Product 2"
+                    src="/default_product_picture.png"
+                  />
+                </section>
+                <p>
+                  Precio: $750 Unidad
+                </p>
+              </article>
+            </a>
+          </li>
+          <li>
+            <a
+              className="product-summary"
+              href="/stores/6f4e5985-2ff8-4118-bbaf-e6004d757c13/products/836fa52e-cece-4a60-ac9d-dabc46e50814"
+              onClick={[Function]}
+            >
+              <article>
+                <h1>
+                  Product 3
+                </h1>
+                <section>
+                  <img
+                    alt="Product 3"
+                    src="/default_product_picture.png"
+                  />
+                </section>
+                <p>
+                  Precio: $850 c/u
+                </p>
+              </article>
+            </a>
+          </li>
+        </ul>
+      </main>
+    </section>
+  </section>
+</main>
+`;
