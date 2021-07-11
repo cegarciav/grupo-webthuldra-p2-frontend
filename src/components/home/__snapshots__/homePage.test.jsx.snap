@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`HomePage When user is not logged-in renders the home page 1`] = `
+<main
+  id="home-page"
+>
+  <a
+    className="main-link"
+    href="/stores"
+    onClick={[Function]}
+  >
+    Explorar tiendas
+  </a>
+  <a
+    className="main-link"
+    href="/signup"
+    onClick={[Function]}
+  >
+    Registrarse
+  </a>
+</main>
+`;
