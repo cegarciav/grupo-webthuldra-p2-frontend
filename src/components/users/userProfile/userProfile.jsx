@@ -30,7 +30,7 @@ const UserProfile = () => {
   if (loading) {
     return (
       <main>
-        <h1>Cargando información de ususario...</h1>
+        <h1>Cargando información de usuario...</h1>
       </main>
     );
   }
