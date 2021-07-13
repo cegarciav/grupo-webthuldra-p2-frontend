@@ -15,10 +15,10 @@ function UsersRouter() {
 
   return (
     <Switch>
-      <Route path={`${path}/:userId/edit`}>
+      <Route path={`${path}/me/edit`}>
         <UserUpdate />
       </Route>
-      <Route path={`${path}/:userId/delete`}>
+      <Route path={`${path}/me/delete`}>
         <UserDelete />
       </Route>
       <Route path={`${path}/:userId/deals`}>
