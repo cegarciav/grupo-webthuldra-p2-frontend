@@ -101,3 +101,22 @@
   opacity: 0.2;
   color: #0d1f39;
 }
+
+.edit-delete-store-button {
+  display: flex;
+  width: max-content;
+  text-decoration: none;
+  background-color: #25559a;
+  border-radius: 10px;
+  color: azure;
+  font-family: 'Cinzel';
+  padding: 0.5em;
+  font-size: 2.7vh;
+  margin: 0.2em;
+  cursor: pointer;
+}
+
+.store-buttons-section {
+  display: flex;
+  padding-bottom: 0.5em;
+}
