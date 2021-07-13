@@ -49,7 +49,7 @@ const StoreProfile = () => {
           </main>
         </section>
         <hr className="section-divisor" />
-        <button type="button">Editar tienda</button>
+        <a role="button" href={`/stores/${storeId}/edit`}>Editar Tienda</a>
         <button type="button">Eliminar tienda</button>
         <section className="store-main-profile">
           <aside className="store-info">
