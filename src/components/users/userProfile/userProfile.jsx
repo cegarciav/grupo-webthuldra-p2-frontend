@@ -51,7 +51,7 @@ const UserProfile = () => {
           </figure>
           <section className="user-profile-buttons">
             <a role="button" href="/users/me/edit">Editar Perfil</a>
-            <a role="button" href="/users/me/delete">Eliminar Perfil</a>
+            <a role="button" href={`/users/${userId}/delete`}>Eliminar Perfil</a>
           </section>
         </section>
 

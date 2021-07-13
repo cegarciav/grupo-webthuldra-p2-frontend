@@ -25,3 +25,31 @@
 .comments-container li {
   padding: 0 0.5em;
 }
+
+.form-new-comment input {
+  border-radius: 0.5em;
+}
+
+.form-new-comment {
+  padding: 0.5em;
+}
+
+.form-new-comment button {
+  background-color: #25559a;
+  border-radius: 0.5em;
+  color: azure;
+  font-family: 'Cinzel';
+  cursor: pointer;
+}
+
+
+.form-new-comment .button-disabled {
+  cursor: not-allowed;
+  background-color: gray;
+}
+
+.form-new-comment p {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: inherit;
+}

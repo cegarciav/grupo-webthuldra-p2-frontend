@@ -31,7 +31,7 @@ exports[`Users profile When user is logged-in and check their own profile render
         Editar Perfil
       </a>
       <a
-        href="/users/me/delete"
+        href="/users/my-profile/delete"
         role="button"
       >
         Eliminar Perfil
@@ -277,7 +277,7 @@ exports[`Users profile When user is not logged-in renders the profile of a given
         Editar Perfil
       </a>
       <a
-        href="/users/me/delete"
+        href="/users/96ab7b63-915e-442b-b83f-e0962bd2c8d8/delete"
         role="button"
       >
         Eliminar Perfil
