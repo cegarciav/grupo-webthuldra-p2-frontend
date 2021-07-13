@@ -182,16 +182,13 @@ exports[`StoreProfile When user is not logged-in renders the profile of the stor
     <section
       className="products-in-store"
     >
-      <button
-        type="button"
+      <a
+        className="new-product-button"
+        href="/stores/undefined/products/new"
+        role="button"
       >
         Añadir producto
-      </button>
-      <button
-        type="button"
-      >
-        Eliminar producto
-      </button>
+      </a>
       <main>
         <h1>
           Lista de productos disponibles
