@@ -49,8 +49,22 @@ const StoreProfile = () => {
           </main>
         </section>
         <hr className="section-divisor" />
-        <button type="button">Editar tienda</button>
-        <button type="button">Eliminar tienda</button>
+        <section className="store-buttons-section">
+          <a
+            role="button"
+            href={`/stores/${storeId}/edit`}
+            className="edit-delete-store-button"
+          >
+            Editar Tienda
+          </a>
+          <a
+            role="button"
+            href={`/stores/${storeId}/delete`}
+            className="edit-delete-store-button"
+          >
+            Eliminar Tienda
+          </a>
+        </section>
         <section className="store-main-profile">
           <aside className="store-info">
             <UserProfileSummary
