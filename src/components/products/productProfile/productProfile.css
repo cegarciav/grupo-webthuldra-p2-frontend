@@ -77,6 +77,17 @@
   margin: 1em auto;
 }
 
+.product-info h4 {
+  padding: 0.2em 0;
+}
+
+.product-info form {
+  margin: 0;
+  padding: 0;
+  align-items: flex-end;
+  max-width: 100%;
+}
+
 .return-link {
   padding: 1em 0;
 }
@@ -87,4 +98,18 @@
   height: max-content;
   display: flex;
   align-items: center;
+}
+
+.buy-product-button {
+  display: flex;
+  width: max-content;
+  text-decoration: none;
+  background-color: #25559a;
+  border-radius: 10px;
+  color: azure;
+  font-family: 'Cinzel';
+  padding: 0.5em;
+  font-size: 2.7vh;
+  margin: 0.2em;
+  cursor: pointer;
 }
