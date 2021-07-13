@@ -10,8 +10,7 @@ function DealProfileSummary({
   status,
   storeName,
   storeId,
-  storeImage,
-  customerId,
+  storePicture,
 }) {
   return (
     <article className="comment-summary">
@@ -21,7 +20,7 @@ function DealProfileSummary({
         >
           <figure>
             <img
-              src={storeImage}
+              src={storePicture || '/default_store_picture.png'}
               alt={storeName}
             />
           </figure>
@@ -30,7 +29,7 @@ function DealProfileSummary({
       </section>
       <section className="comment-text">
         <Link
-          to={customerId ? `/users/${customerId}/deals/${id}` : `/stores/${storeId}/deals/${id}`}
+          to={`/stores/${storeId}/deals/${id}`}
         >
           {storeName}
         </Link>
@@ -44,12 +43,11 @@ DealProfileSummary.propTypes = {
   status: PropTypes.string.isRequired,
   storeName: PropTypes.string.isRequired,
   storeId: PropTypes.string.isRequired,
-  storeImage: PropTypes.string,
-  customerId: PropTypes.string.isRequired,
+  storePicture: PropTypes.string,
 };
 
 DealProfileSummary.defaultProps = {
-  storeImage: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ5xmqqf3t_zKomZB_LE3K6V_HWVEOoKZohQQ&usqp=CAU',
+  storePicture: undefined,
 };
 
 export default DealProfileSummary;

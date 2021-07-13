@@ -4,7 +4,7 @@
   background-color: azure;
   color: black;
   height: 25vw;
-  width: 60vh;
+  width: 50vh;
   min-height: 250px;
   display: flex;
   flex-direction: column;
@@ -97,9 +97,39 @@
   font-weight: normal;
 }
 
+.user-header-content .user-profile-buttons {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.user-header-content .user-profile-buttons a {
+  text-decoration: none;
+  background-color: #25559a;
+  border-radius: 10px;
+  color: azure;
+  font-family: 'Cinzel';
+  padding: 0.5em;
+  font-size: 2.7vh;
+  margin: 0.2em;
+  cursor: pointer;
+}
+
+.stores-in-user .new-store-button {
+  display: flex;
+  width: max-content;
+  text-decoration: none;
+  background-color: #25559a;
+  border-radius: 10px;
+  color: azure;
+  font-family: 'Cinzel';
+  padding: 0.5em;
+  font-size: 2.7vh;
+  margin: 0.2em;
+  cursor: pointer;
+}
+
 .user-main-profile {
   display: flex;
-  flex-wrap: wrap;
   box-sizing: border-box;
   width: 100%;
 }
@@ -108,4 +138,17 @@
   flex-grow: 1;
   padding-right: 1em;
   box-sizing: border-box;
+}
+
+.user-info-section {
+  padding: 0.5em 0;
+}
+
+.stores-in-user {
+  flex-grow: 3;
+}
+
+.stores-in-user main {
+  padding-top: 0;
+  width: 100%;
 }

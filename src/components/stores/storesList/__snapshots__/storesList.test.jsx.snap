@@ -1,0 +1,90 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`StoresList When user is not logged-in renders the stores list 1`] = `
+<main>
+  <h1>
+    Lista de tiendas
+  </h1>
+  <section
+    className="searchbar-container"
+  >
+    <input
+      className="main-searchbar"
+      onChange={[Function]}
+      placeholder="Buscar tiendas"
+      type="text"
+      value=""
+    />
+  </section>
+  <ul
+    className="stores-list"
+  >
+    <li>
+      <a
+        className="store-summary"
+        href="/stores/6f4e5985-2ff8-4118-bbaf-e6004d757c13"
+        onClick={[Function]}
+      >
+        <article>
+          <h1>
+            Store name 1
+          </h1>
+          <section>
+            <img
+              alt="Description 1"
+              src="/default_store_picture.png"
+            />
+          </section>
+          <p>
+            Dirección: Address 1
+          </p>
+        </article>
+      </a>
+    </li>
+    <li>
+      <a
+        className="store-summary"
+        href="/stores/3e7ca498-8646-4493-bce6-b8cad8c5908e"
+        onClick={[Function]}
+      >
+        <article>
+          <h1>
+            Store name 2
+          </h1>
+          <section>
+            <img
+              alt="Description 2"
+              src="https://cdn.geekwire.com/wp-content/uploads/2020/02/amzngo1.jpeg"
+            />
+          </section>
+          <p>
+            Dirección: Address 2
+          </p>
+        </article>
+      </a>
+    </li>
+    <li>
+      <a
+        className="store-summary"
+        href="/stores/9440a98a-2973-484b-b8bd-78beb6b24eef"
+        onClick={[Function]}
+      >
+        <article>
+          <h1>
+            Store name 3
+          </h1>
+          <section>
+            <img
+              alt="Description 3"
+              src="/default_store_picture.png"
+            />
+          </section>
+          <p>
+            Dirección: Address 3
+          </p>
+        </article>
+      </a>
+    </li>
+  </ul>
+</main>
+`;

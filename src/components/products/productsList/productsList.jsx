@@ -1,41 +1,40 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import ProductProfileSummary from '../productProfile/productProfileSummary';
+import ErrorsModal from '../../common/errorsModal';
+import { apiGet } from '../../../apiService';
 import './productsList.css';
 
 function ProductsList({ storeId }) {
-  const products = [{
-    id: '4c74458e-f05a-4729-8f36-7836552eef33',
-    name: 'Product 1',
-    stock: 100,
-    price: 500,
-    unit: null,
-    storeId: '207ff996-34aa-4fb6-90ed-ea57a74d8642',
-  }, {
-    id: '4c74458e-f05a-4729-8f36-7836552eef34',
-    name: 'Product 2',
-    stock: 100,
-    price: 5000,
-    unit: 'kg',
-    storeId: '207ff996-34aa-4fb6-90ed-ea57a74d8642',
-  }, {
-    id: '4c74458e-f05a-4729-8f36-7836552eef33',
-    name: 'Product 3',
-    stock: 100,
-    price: 500,
-    unit: null,
-    storeId: '207ff996-34aa-4fb6-90ed-ea57a74d8643',
-  }, {
-    id: '4c74458e-f05a-4729-8f36-7836552eef34',
-    name: 'Product 4',
-    stock: 100,
-    price: 5000,
-    unit: 'kg',
-    storeId: '207ff996-34aa-4fb6-90ed-ea57a74d8644',
-  }];
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [errors, setErrors] = useState(null);
+
+  useEffect(async () => {
+    setLoading(true);
+    const productsResponse = await apiGet(`/stores/${storeId}/products`);
+    setLoading(false);
+    if (productsResponse.data && productsResponse.statusCode === 200) {
+      setProducts(productsResponse.data);
+    } else if (productsResponse.type === 'response' && productsResponse.errors) {
+      setErrors(productsResponse.errors);
+    } else {
+      setErrors([productsResponse]);
+    }
+  }, []);
+
+  if (loading) {
+    return (
+      <main>
+        <h1>Cargando lista de productos...</h1>
+      </main>
+    );
+  }
+  if (errors) {
+    return <ErrorsModal errors={errors} />;
+  }
 
   const productComponents = products
-    .filter((product) => product.storeId === storeId)
     .map((product) => (
       <li key={product.id}>
         <ProductProfileSummary
@@ -44,7 +43,7 @@ function ProductsList({ storeId }) {
           stock={product.stock}
           price={product.price}
           unit={product.unit}
-          image={product.image}
+          picture={product.picture}
           storeId={storeId}
         />
       </li>

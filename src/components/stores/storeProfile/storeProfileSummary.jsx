@@ -9,7 +9,7 @@ function StoreProfileSummary({
   name,
   id,
   address,
-  image,
+  picture,
   description,
 }) {
   return (
@@ -21,7 +21,7 @@ function StoreProfileSummary({
         <h1>{ name }</h1>
         <section>
           <img
-            src={image}
+            src={picture || '/default_store_picture.png'}
             alt={description}
           />
         </section>
@@ -35,8 +35,12 @@ StoreProfileSummary.propTypes = {
   name: PropTypes.string.isRequired,
   id: PropTypes.string.isRequired,
   address: PropTypes.string.isRequired,
-  image: PropTypes.string.isRequired,
+  picture: PropTypes.string,
   description: PropTypes.string.isRequired,
+};
+
+StoreProfileSummary.defaultProps = {
+  picture: undefined,
 };
 
 export default StoreProfileSummary;

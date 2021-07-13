@@ -1,12 +1,11 @@
 .comments-container {
   padding-top: 0.3em;
   padding-bottom: 0.3em;
-  width: 60vh;
+  width: 50vh;
   background-color: azure;
   margin: 0 auto;
   border-radius: 1em;
   box-shadow: 0.5vh 0.5vh 2vh #0d1f39;
-  max-height: 60vh;
 }
 
 .comments-container h1 {

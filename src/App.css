@@ -146,3 +146,59 @@ main {
   color: azure;
   cursor: pointer;
 }
+
+form {
+  background-color: azure;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  box-sizing: border-box;
+  border-radius: 10px;
+  padding: 5px 20px;
+  max-width: 60vw;
+  min-width: max-content;
+  margin-top: 0.5em;
+}
+
+form input {
+  font-size: 2.4vh;
+}
+
+.form-error {
+  margin: 0;
+  color: red;
+  font-size: 0.8em;
+}
+
+.form-field-100 {
+  display: flex;
+  flex-direction: column;
+  padding: 0.3em 0;
+}
+
+.form-submit {
+  display: flex;
+  justify-content: center;
+}
+
+.form-submit button {
+  background-color: #25559a;
+  border-radius: 10px;
+  width: 50%;
+  color: azure;
+  font-family: 'Cinzel';
+  padding: 0.5em 0;
+  font-size: 2.7vh;
+}
+
+.main-searchbar {
+  width: 90%;
+  font-size: 3.5vh;
+  border-radius: 0.3em;
+  padding: 0.3em;
+}
+
+.searchbar-container {
+  display: flex;
+  justify-content: center;
+}
