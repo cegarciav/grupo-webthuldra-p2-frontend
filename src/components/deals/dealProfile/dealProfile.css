@@ -1,0 +1,99 @@
+.deal-main-profile {
+  display: flex;
+  flex-wrap: wrap;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.deal-info {
+  flex-grow: 1;
+  padding-right: 1em;
+  box-sizing: border-box;
+  max-width: 30vw;
+}
+
+.deal-info ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.messages-in-deal {
+  flex-grow: 3;
+  background-color: azure;
+  padding: 0.5em;
+  border-radius: 0.5em;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.messages-in-deal h1 {
+  border-bottom: 1px solid #25559a;
+}
+
+.messages-in-deal main {
+  padding-top: 0;
+  width: 100%;
+}
+
+.messages-in-deal ul {
+  list-style: none;
+  padding: 0 5px;
+  display: flex;
+  flex-direction: column;
+}
+
+.messages-in-deal ul li {
+  background-color: #25559a;
+  max-width: 60%;
+  border-radius: 0.5em;
+  color: white;
+  margin: 1px 0;
+}
+
+.messages-in-deal p {
+  padding: 0.5em;
+  margin: 0;
+}
+
+.messages-in-deal input {
+  width: 100%;
+  box-sizing: border-box;
+  font-size: 1.5em;
+  border-radius: 0.1em;
+  padding: 1px;
+}
+
+.messages-in-deal form {
+  padding: 0;
+  margin: 0;
+}
+
+.my-message {
+  text-align: right;
+  align-self: end;
+}
+
+.other-message {
+  text-align: left;
+  align-self: start;
+}
+
+.product-in-deal {
+  margin: 0;
+  display: flex;
+  padding-bottom: 5px;
+  border-bottom: 1px solid #25559a;
+  width: 100%;
+  align-items: center;
+}
+
+.product-in-deal img {
+  max-width: 5vw;
+  max-height: 5vw;
+  margin-right: 5px;
+}
+
+.product-in-deal figcaption {
+  align-self: center;
+}
