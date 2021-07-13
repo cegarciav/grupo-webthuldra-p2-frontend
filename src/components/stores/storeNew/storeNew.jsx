@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Redirect } from 'react-router-dom';
 import {
   Formik,
   Form,
@@ -12,11 +13,14 @@ import { apiPost } from '../../../apiService';
 function StoreNew() {
   const [errors, setErrors] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [store, setStore] = useState(null);
+  const [successfullyCreated, setSuccessfullyCreated] = useState(false);
 
   const initialValues = {
     name: '',
     address: '',
     description: '',
+    picture: '',
   };
 
   const storeValidation = Yup.object({
@@ -24,18 +28,29 @@ function StoreNew() {
       .required('Debes ingresar un nombre'),
     address: Yup.string()
       .required('Debes ingresar una dirección'),
+    description: Yup.string()
+      .min(1, 'La descripción debe tener al menos un caracter'),
+    picture: Yup.string()
+      .url('La imagen debe ser una URL válida'),
   });
 
   const submitForm = async (values) => {
     setLoading(true);
-    const storeResponse = await apiPost('/stores/', values);
+    const storeResponse = await apiPost('/stores', values);
     setLoading(false);
-    if (storeResponse.type === 'response' && storeResponse.errors) {
+    if (storeResponse.data && storeResponse.statusCode === 201) {
+      setSuccessfullyCreated(true);
+      setStore(storeResponse.data);
+    } else if (storeResponse.type === 'response' && storeResponse.errors) {
       setErrors(storeResponse.errors);
     } else {
       setErrors([storeResponse]);
     }
   };
+
+  if (successfullyCreated && store) {
+    return <Redirect to={`/stores/${store.id}`} />;
+  }
 
   if (loading) {
     return (
@@ -49,7 +64,7 @@ function StoreNew() {
     return (
       <ErrorsModal
         errors={errors}
-        redirectionUrl="/store/new"
+        redirectionUrl="/stores/new"
       />
     );
   }
@@ -78,6 +93,11 @@ function StoreNew() {
               Descripción
               <Field name="description" placeholder="Descripción" />
               <ErrorMessage className="form-error" name="description" component="p" />
+            </section>
+            <section className="form-field-100">
+              Url de la foto de tu tienda
+              <Field name="picture" placeholder="Descripción" />
+              <ErrorMessage className="form-error" name="picture" component="p" />
             </section>
             <section className="form-submit">
               <button
