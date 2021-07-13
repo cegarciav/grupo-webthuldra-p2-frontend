@@ -18,7 +18,7 @@ function UsersRouter() {
       <Route path={`${path}/me/edit`}>
         <UserUpdate />
       </Route>
-      <Route path={`${path}/me/delete`}>
+      <Route path={`${path}/:userId/delete`}>
         <UserDelete />
       </Route>
       <Route path={`${path}/:userId/deals`}>

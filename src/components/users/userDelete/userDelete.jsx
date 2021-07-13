@@ -1,27 +1,34 @@
 import React, { useState } from 'react';
-import {
-  Formik,
-  Form,
-} from 'formik';
+import { useParams, Redirect } from 'react-router-dom';
 import ErrorsModal from '../../common/errorsModal';
 import { apiDelete } from '../../../apiService';
+import './userDelete.css';
 
 function UserDelete() {
+  const { userId } = useParams();
+  const [successfullyDeleted, setSuccessfullyDeleted] = useState(false);
   const [errors, setErrors] = useState(null);
   const [loading, setLoading] = useState(false);
 
-  const submitForm = async (values) => {
-    setLoading(true);
-    const authResponse = await apiDelete('/users/', values);
-    setLoading(false);
-    if (authResponse.data && authResponse.statusCode === 200) {
-      localStorage.setItem('apiToken', authResponse.data.accessToken);
-    } else if (authResponse.type === 'response' && authResponse.errors) {
-      setErrors(authResponse.errors);
-    } else {
-      setErrors([authResponse]);
+  const submitForm = async (e) => {
+    e.preventDefault();
+    if (userId) {
+      setLoading(true);
+      const deleteResponse = await apiDelete(`/admin/users/${userId}`);
+      setLoading(false);
+      if (deleteResponse.statusCode === 204) {
+        setSuccessfullyDeleted(true);
+      } else if (deleteResponse.type === 'response' && deleteResponse.errors) {
+        setErrors(deleteResponse.errors);
+      } else {
+        setErrors([deleteResponse]);
+      }
     }
   };
+
+  if (successfullyDeleted) {
+    return <Redirect to="/" />;
+  }
 
   if (loading) {
     return (
@@ -35,34 +42,23 @@ function UserDelete() {
     return (
       <ErrorsModal
         errors={errors}
-        redirectionUrl="/users/me/delete"
       />
     );
   }
 
   return (
     <main>
-      <Formik
-        onSubmit={submitForm}
-      >
-        {({ isValid, dirty }) => (
-          <Form className="form-user-inputs">
-            <p>
-              Eliminar sus datos de usuario es una acción
-              irreversible. ¿Desea continuar?
-            </p>
-            <section className="form-submit">
-              <button
-                type="submit"
-                disabled={!(isValid && dirty)}
-                className={!(isValid && dirty) ? 'button-disabled' : ''}
-              >
-                Confirmar
-              </button>
-            </section>
-          </Form>
-        )}
-      </Formik>
+      <form onSubmit={(e) => { submitForm(e); }}>
+        <p className="user-delete-warning">
+          Eliminar los datos de un usuario es un proceso irreversible,
+          ¿desea continuar?
+        </p>
+        <section className="form-submit">
+          <button type="submit">
+            Confirmar
+          </button>
+        </section>
+      </form>
     </main>
   );
 }

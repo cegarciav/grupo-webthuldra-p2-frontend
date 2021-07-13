@@ -100,7 +100,7 @@ async function apiPatch(path, body, params) {
   }
 }
 
-async function apiDelete(path, body, params) {
+async function apiDelete(path, params) {
   try {
     if (!apiOrigin) throw Error('La conexión con el servidor no ha podido ser establecida');
     const url = new URL(`${apiOrigin}${path}`);
@@ -112,8 +112,7 @@ async function apiDelete(path, body, params) {
         .forEach((key) => url.searchParams.append(key, params[key]));
     }
     const response = await apiRequester.delete(
-      url,
-      body, {
+      url, {
         headers,
       },
     );
