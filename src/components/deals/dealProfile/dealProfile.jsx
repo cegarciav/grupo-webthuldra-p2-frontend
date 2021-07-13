@@ -34,7 +34,7 @@ const DealProfile = () => {
   if (loading) {
     return (
       <main>
-        <h1>Cargando información de ususario...</h1>
+        <h1>Cargando información de acuerdo de compra...</h1>
       </main>
     );
   }
