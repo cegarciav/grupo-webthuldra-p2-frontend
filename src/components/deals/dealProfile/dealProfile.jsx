@@ -7,7 +7,7 @@ import {
 import * as Yup from 'yup';
 import { useParams } from 'react-router-dom';
 import ErrorsModal from '../../common/errorsModal';
-import { apiGet, apiPost } from '../../../apiService';
+import { apiGet, apiPost, apiPatch } from '../../../apiService';
 
 const DealProfile = () => {
   const { storeId, dealId } = useParams();
@@ -18,6 +18,7 @@ const DealProfile = () => {
   const [updatedMessages, setUpdatedMessages] = useState(false);
   const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState(null);
+  const [currentStatus, setCurrentStatus] = useState(undefined);
 
   const messageValidation = Yup.object({
     text: Yup.string()
@@ -30,6 +31,7 @@ const DealProfile = () => {
     setLoading(false);
     if (dealResponse.data && dealResponse.statusCode === 200) {
       setDeal(dealResponse.data);
+      setCurrentStatus(dealResponse.data.status);
       const messagesResponse = await apiGet(`/deals/${dealId}/messages`);
       if (messagesResponse.data && messagesResponse.statusCode === 200) {
         setMessages(messagesResponse.data);
@@ -77,6 +79,24 @@ const DealProfile = () => {
       }
     }
   }, [updatedMessages]);
+
+  useEffect(async () => {
+    if (deal && deal.status !== currentStatus) {
+      setLoading(true);
+      const dealResponse = await apiPatch(`/stores/${storeId}/deals/${dealId}`, {
+        status: currentStatus,
+      });
+      setLoading(false);
+      if (dealResponse.data && dealResponse.statusCode === 200) {
+        setDeal(dealResponse.data);
+        setCurrentStatus(dealResponse.data.status);
+      } else if (dealResponse.type === 'response' && dealResponse.errors) {
+        setErrors(dealResponse.errors);
+      } else {
+        setErrors([dealResponse]);
+      }
+    }
+  }, [currentStatus]);
 
   const sendMessage = async (values) => {
     setLoading(true);
@@ -126,13 +146,36 @@ const DealProfile = () => {
         );
       });
 
+    const createdAt = new Date(deal.createdAt);
+    const lastUpdate = new Date(deal.updatedAt);
+
     return (
       <main>
-        <button type="button">Editar deal</button>
-        <button type="button">Eliminar deal</button>
+        <section className="deal-edition-section">
+          <select
+            value={currentStatus}
+            onChange={(e) => { setCurrentStatus(e.target.value); }}
+            required
+          >
+            <option value="abierto">Abierto</option>
+            <option value="completado">Completado</option>
+            <option value="rechazado">Rechazado</option>
+          </select>
+          <button type="button">Eliminar deal</button>
+        </section>
         <section className="deal-main-profile">
           <aside className="deal-info">
             <h1>Productos a comprar</h1>
+            <h4>{`Creado el ${createdAt.getDate()}/${createdAt.getMonth() + 1}/${createdAt.getFullYear()}`}</h4>
+            <h4>{`Última modificación: ${lastUpdate.getDate()}/${lastUpdate.getMonth() + 1}/${lastUpdate.getFullYear()}`}</h4>
+            <h4>
+              {`Comprador: ${deal.customer.firstName} ${deal.customer.lastName}. `}
+              <a href={`/users/${deal.customer.id}`}>Ver perfil</a>
+            </h4>
+            <h4>
+              {`Tienda: ${deal.store.name}. `}
+              <a href={`/stores/${deal.storeId}`}>Ver tienda</a>
+            </h4>
             <ul>
               {productsList}
             </ul>
