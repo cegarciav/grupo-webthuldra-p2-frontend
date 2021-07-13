@@ -23,18 +23,24 @@ exports[`StoreProfile When user is not logged-in renders the profile of the stor
   <hr
     className="section-divisor"
   />
-  <a
-    href="/stores/6f4e5985-2ff8-4118-bbaf-e6004d757c13/edit"
-    role="button"
+  <section
+    className="store-buttons-section"
   >
-    Editar Tienda
-  </a>
-  <a
-    href="/stores/6f4e5985-2ff8-4118-bbaf-e6004d757c13/delete"
-    role="button"
-  >
-    Eliminar Tienda
-  </a>
+    <a
+      className="edit-delete-store-button"
+      href="/stores/6f4e5985-2ff8-4118-bbaf-e6004d757c13/edit"
+      role="button"
+    >
+      Editar Tienda
+    </a>
+    <a
+      className="edit-delete-store-button"
+      href="/stores/6f4e5985-2ff8-4118-bbaf-e6004d757c13/delete"
+      role="button"
+    >
+      Eliminar Tienda
+    </a>
+  </section>
   <section
     className="store-main-profile"
   >
