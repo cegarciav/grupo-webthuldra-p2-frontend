@@ -50,7 +50,7 @@ const StoreProfile = () => {
         </section>
         <hr className="section-divisor" />
         <a role="button" href={`/stores/${storeId}/edit`}>Editar Tienda</a>
-        <button type="button">Eliminar tienda</button>
+        <a role="button" href={`/stores/${storeId}/delete`}>Eliminar Tienda</a>
         <section className="store-main-profile">
           <aside className="store-info">
             <UserProfileSummary
