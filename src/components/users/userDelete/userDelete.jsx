@@ -45,14 +45,20 @@ function UserDelete() {
       <Formik
         onSubmit={submitForm}
       >
-        {({ isSubmitting }) => (
+        {({ isValid, dirty }) => (
           <Form className="form-user-inputs">
             <p>
               Eliminar sus datos de usuario es una acción
               irreversible. ¿Desea continuar?
             </p>
             <section className="form-submit">
-              <button type="submit" disabled={isSubmitting}>Confirmar</button>
+              <button
+                type="submit"
+                disabled={!(isValid && dirty)}
+                className={!(isValid && dirty) ? 'button-disabled' : ''}
+              >
+                Confirmar
+              </button>
             </section>
           </Form>
         )}

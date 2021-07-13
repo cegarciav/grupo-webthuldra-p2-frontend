@@ -65,7 +65,7 @@ function UserUpdate() {
         validationSchema={userUpdateValidation}
         onSubmit={submitForm}
       >
-        {({ isSubmitting }) => (
+        {({ isValid, dirty }) => (
           <Form className="form-user-inputs">
             <h1>Ingresa los datos que quieras actualizar y tu contraseña</h1>
             <fieldset className="form-user-name">
@@ -109,7 +109,13 @@ function UserUpdate() {
               <ErrorMessage className="form-error" name="password" component="p" />
             </section>
             <section className="form-submit">
-              <button type="submit" disabled={isSubmitting}>Actualizar información</button>
+              <button
+                type="submit"
+                disabled={!(isValid && dirty)}
+                className={!(isValid && dirty) ? 'button-disabled' : ''}
+              >
+                Actualizar información
+              </button>
             </section>
           </Form>
         )}

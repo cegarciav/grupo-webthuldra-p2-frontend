@@ -61,7 +61,7 @@ function StoreNew() {
         validationSchema={storeValidation}
         onSubmit={submitForm}
       >
-        {({ isSubmitting }) => (
+        {({ isValid, dirty }) => (
           <Form className="form-user-inputs">
             <h1>Ingresa los datos de tu tienda</h1>
             <section className="form-field-100">
@@ -80,7 +80,13 @@ function StoreNew() {
               <ErrorMessage className="form-error" name="description" component="p" />
             </section>
             <section className="form-submit">
-              <button type="submit" disabled={isSubmitting}>Crear tienda</button>
+              <button
+                type="submit"
+                disabled={!(isValid && dirty)}
+                className={!(isValid && dirty) ? 'button-disabled' : ''}
+              >
+                Crear tienda
+              </button>
             </section>
           </Form>
         )}

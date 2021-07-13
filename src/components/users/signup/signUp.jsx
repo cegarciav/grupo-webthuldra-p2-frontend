@@ -80,7 +80,7 @@ function SignUp() {
         validationSchema={loginValidation}
         onSubmit={submitForm}
       >
-        {({ isSubmitting }) => (
+        {({ isValid, dirty }) => (
           <Form className="form-user-inputs">
             <h1>Regístrate</h1>
             <fieldset className="form-user-name">
@@ -124,7 +124,13 @@ function SignUp() {
               <ErrorMessage className="form-error" name="confirmPassword" component="p" />
             </section>
             <section className="form-submit">
-              <button type="submit" disabled={isSubmitting}>Crear cuenta</button>
+              <button
+                type="submit"
+                disabled={!(isValid && dirty)}
+                className={!(isValid && dirty) ? 'button-disabled' : ''}
+              >
+                Crear cuenta
+              </button>
             </section>
           </Form>
         )}
