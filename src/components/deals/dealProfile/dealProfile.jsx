@@ -19,6 +19,7 @@ const DealProfile = () => {
   const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState(null);
   const [currentStatus, setCurrentStatus] = useState(undefined);
+  const [isParticipant, setIsParticipant] = useState(false);
 
   const messageValidation = Yup.object({
     text: Yup.string()
@@ -47,6 +48,32 @@ const DealProfile = () => {
       setErrors([dealResponse]);
     }
   }, []);
+
+  useEffect(async () => {
+    if (deal) {
+      setLoading(true);
+      const storeResponse = await apiGet(`/stores/${storeId}`);
+      setLoading(false);
+      if (storeResponse.data && storeResponse.statusCode === 200) {
+        const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+        setIsParticipant([storeResponse.data.ownerId, deal.customerId].includes(currentUser.id)
+          || currentUser.isAdmin);
+        const messagesResponse = await apiGet(`/deals/${dealId}/messages`);
+        if (messagesResponse.data && messagesResponse.statusCode === 200) {
+          setMessages(messagesResponse.data);
+          setUpdatedMessages(true);
+        } else if (messagesResponse.type === 'response' && messagesResponse.errors) {
+          setErrors(messagesResponse.errors);
+        } else {
+          setErrors([messagesResponse]);
+        }
+      } else if (storeResponse.type === 'response' && storeResponse.errors) {
+        setErrors(storeResponse.errors);
+      } else {
+        setErrors([storeResponse]);
+      }
+    }
+  }, [deal]);
 
   useEffect(async () => {
     if (deal) {
@@ -122,7 +149,7 @@ const DealProfile = () => {
     return <ErrorsModal errors={errors} />;
   }
 
-  if (deal) {
+  if (deal && isParticipant) {
     const productsList = deal.products
       .map((product) => (
         <li key={product.id}>

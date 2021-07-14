@@ -77,8 +77,13 @@ const StoreProfile = () => {
             />
           </aside>
           <section className="products-in-store">
-            <button type="button">Añadir producto</button>
-            <button type="button">Eliminar producto</button>
+            <a
+              role="button"
+              href={`/stores/${store.id}/products/new`}
+              className="new-product-button"
+            >
+              Añadir producto
+            </a>
             <ProductsList storeId={storeId} />
           </section>
         </section>

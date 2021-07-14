@@ -48,7 +48,6 @@
 
 .store-main-profile {
   display: flex;
-  flex-wrap: wrap;
   box-sizing: border-box;
   width: 100%;
 }
@@ -102,7 +101,7 @@
   color: #0d1f39;
 }
 
-.edit-delete-store-button {
+.edit-delete-store-button, .products-in-store .new-product-button {
   display: flex;
   width: max-content;
   text-decoration: none;
