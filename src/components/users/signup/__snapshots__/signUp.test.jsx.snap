@@ -1,0 +1,101 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Sign Up view When user is not logged-in renders the signup form 1`] = `
+<main>
+  <form
+    action="#"
+    className="form-user-inputs"
+    onReset={[Function]}
+    onSubmit={[Function]}
+  >
+    <h1>
+      Regístrate
+    </h1>
+    <fieldset
+      className="form-user-name"
+    >
+      <section>
+        Nombre
+        <input
+          name="firstName"
+          onBlur={[Function]}
+          onChange={[Function]}
+          placeholder="Nombre"
+          value=""
+        />
+      </section>
+      <section>
+        Apellido
+        <input
+          name="lastName"
+          onBlur={[Function]}
+          onChange={[Function]}
+          placeholder="Apellido"
+          value=""
+        />
+      </section>
+    </fieldset>
+    <section
+      className="form-field-100"
+    >
+      Email
+      <input
+        name="email"
+        onBlur={[Function]}
+        onChange={[Function]}
+        placeholder="email"
+        value=""
+      />
+    </section>
+    <section
+      className="form-field-100"
+    >
+      Url de tu foto
+      <input
+        name="picture"
+        onBlur={[Function]}
+        onChange={[Function]}
+        placeholder="Foto de perfil"
+        value=""
+      />
+    </section>
+    <section
+      className="form-field-100"
+    >
+      Contraseña
+      <input
+        name="password"
+        onBlur={[Function]}
+        onChange={[Function]}
+        placeholder="Contraseña"
+        type="password"
+        value=""
+      />
+    </section>
+    <section
+      className="form-field-100"
+    >
+      Confirma tu contraseña
+      <input
+        name="confirmPassword"
+        onBlur={[Function]}
+        onChange={[Function]}
+        placeholder="Confirmar contraseña"
+        type="password"
+        value=""
+      />
+    </section>
+    <section
+      className="form-submit"
+    >
+      <button
+        className="button-disabled"
+        disabled={true}
+        type="submit"
+      >
+        Crear cuenta
+      </button>
+    </section>
+  </form>
+</main>
+`;
