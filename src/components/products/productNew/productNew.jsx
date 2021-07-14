@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Redirect, useParams } from 'react-router-dom';
 import {
   Formik,
@@ -8,7 +8,7 @@ import {
 } from 'formik';
 import * as Yup from 'yup';
 import ErrorsModal from '../../common/errorsModal';
-import { apiPost } from '../../../apiService';
+import { apiPost, apiGet } from '../../../apiService';
 
 function ProductNew() {
   const { storeId } = useParams();
@@ -16,6 +16,7 @@ function ProductNew() {
   const [loading, setLoading] = useState(false);
   const [product, setProduct] = useState(null);
   const [successfullyCreated, setSuccessfullyCreated] = useState(false);
+  const [isParticipant, setIsParticipant] = useState(false);
 
   const initialValues = {
     name: '',
@@ -56,6 +57,21 @@ function ProductNew() {
     }
   };
 
+  useEffect(async () => {
+    setLoading(true);
+    const storeResponse = await apiGet(`/stores/${storeId}`);
+    setLoading(false);
+    if (storeResponse.data && storeResponse.statusCode === 200) {
+      const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+      const validUser = currentUser && (currentUser.id === storeResponse.data.ownerId);
+      setIsParticipant(validUser);
+    } else if (storeResponse.type === 'response' && storeResponse.errors) {
+      setErrors(storeResponse.errors);
+    } else {
+      setErrors([storeResponse]);
+    }
+  }, []);
+
   if (successfullyCreated && product) {
     return <Redirect to={`/stores/${storeId}/products/${product.id}`} />;
   }
@@ -77,65 +93,69 @@ function ProductNew() {
     );
   }
 
-  return (
-    <main>
-      <Formik
-        initialValues={initialValues}
-        validationSchema={productValidation}
-        onSubmit={submitForm}
-      >
-        {({ isValid, dirty }) => (
-          <Form className="form-user-inputs">
-            <h1>Ingresa los datos de tu producto</h1>
-            <section className="form-field-100">
-              Nombre
-              <Field name="name" placeholder="Nombre" />
-              <ErrorMessage className="form-error" name="name" component="p" />
-            </section>
-            <section className="form-field-100">
-              Stock disponible
-              <Field
-                name="stock"
-                placeholder="Stock disponible"
-                type="number"
-                min="1"
-              />
-              <ErrorMessage className="form-error" name="stock" component="p" />
-            </section>
-            <section className="form-field-100">
-              Precio
-              <Field
-                name="price"
-                placeholder="$"
-                type="number"
-                min="0"
-              />
-              <ErrorMessage className="form-error" name="price" component="p" />
-            </section>
-            <section className="form-field-100">
-              Unidad (kg, lt, trozo, etc)
-              <Field name="unit" placeholder="Unidad" />
-              <ErrorMessage className="form-error" name="unit" component="p" />
-            </section>
-            <section className="form-field-100">
-              Url de la foto de tu tienda
-              <Field name="picture" placeholder="Url de la foto del producto" />
-              <ErrorMessage className="form-error" name="picture" component="p" />
-            </section>
-            <section className="form-submit">
-              <button
-                type="submit"
-                disabled={!(isValid && dirty)}
-                className={!(isValid && dirty) ? 'button-disabled' : ''}
-              >
-                Añadir producto
-              </button>
-            </section>
-          </Form>
-        )}
-      </Formik>
-    </main>
-  );
+  if (isParticipant) {
+    return (
+      <main>
+        <Formik
+          initialValues={initialValues}
+          validationSchema={productValidation}
+          onSubmit={submitForm}
+        >
+          {({ isValid, dirty }) => (
+            <Form className="form-user-inputs">
+              <h1>Ingresa los datos de tu producto</h1>
+              <section className="form-field-100">
+                Nombre
+                <Field name="name" placeholder="Nombre" />
+                <ErrorMessage className="form-error" name="name" component="p" />
+              </section>
+              <section className="form-field-100">
+                Stock disponible
+                <Field
+                  name="stock"
+                  placeholder="Stock disponible"
+                  type="number"
+                  min="1"
+                />
+                <ErrorMessage className="form-error" name="stock" component="p" />
+              </section>
+              <section className="form-field-100">
+                Precio
+                <Field
+                  name="price"
+                  placeholder="$"
+                  type="number"
+                  min="0"
+                />
+                <ErrorMessage className="form-error" name="price" component="p" />
+              </section>
+              <section className="form-field-100">
+                Unidad (kg, lt, trozo, etc)
+                <Field name="unit" placeholder="Unidad" />
+                <ErrorMessage className="form-error" name="unit" component="p" />
+              </section>
+              <section className="form-field-100">
+                Url de la foto de tu tienda
+                <Field name="picture" placeholder="Url de la foto del producto" />
+                <ErrorMessage className="form-error" name="picture" component="p" />
+              </section>
+              <section className="form-submit">
+                <button
+                  type="submit"
+                  disabled={!(isValid && dirty)}
+                  className={!(isValid && dirty) ? 'button-disabled' : ''}
+                >
+                  Añadir producto
+                </button>
+              </section>
+            </Form>
+          )}
+        </Formik>
+      </main>
+    );
+  }
+
+  return <main />;
 }
 
 export default ProductNew;

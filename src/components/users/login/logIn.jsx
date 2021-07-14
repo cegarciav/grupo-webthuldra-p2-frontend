@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Redirect } from 'react-router-dom';
 import {
   Formik,
   Form,
@@ -7,11 +8,12 @@ import {
 } from 'formik';
 import * as Yup from 'yup';
 import ErrorsModal from '../../common/errorsModal';
-import { apiPost } from '../../../apiService';
+import { apiPost, apiGet } from '../../../apiService';
 
 function LogIn() {
   const [errors, setErrors] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [logged, setLogged] = useState(false);
 
   const initialValues = {
     email: '',
@@ -31,12 +33,25 @@ function LogIn() {
     setLoading(false);
     if (authResponse.data && authResponse.statusCode === 200) {
       localStorage.setItem('apiToken', authResponse.data.accessToken);
+      const myInfoResponse = await apiGet('/users/me');
+      if (myInfoResponse.data && myInfoResponse.statusCode === 200) {
+        localStorage.setItem('currentUser', JSON.stringify(myInfoResponse.data));
+        setLogged(true);
+      } else if (myInfoResponse.type === 'response' && myInfoResponse.errors) {
+        setErrors(myInfoResponse.errors);
+      } else {
+        setErrors([myInfoResponse]);
+      }
     } else if (authResponse.type === 'response' && authResponse.errors) {
       setErrors(authResponse.errors);
     } else {
       setErrors([authResponse]);
     }
   };
+
+  if (logged) {
+    return <Redirect to="/" />;
+  }
 
   if (loading) {
     return (

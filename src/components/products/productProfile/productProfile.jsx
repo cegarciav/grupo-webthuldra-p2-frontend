@@ -20,6 +20,8 @@ const ProductProfile = () => {
   const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState(null);
   const [deal, setDeal] = useState(null);
+  const [isParticipant, setIsParticipant] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(false);
 
   const purchaseValidation = Yup.object({
     amount: Yup.number()
@@ -60,6 +62,22 @@ const ProductProfile = () => {
     }
   }, []);
 
+  useEffect(async () => {
+    setLoading(true);
+    const storeResponse = await apiGet(`/stores/${storeId}`);
+    setLoading(false);
+    if (storeResponse.data && storeResponse.statusCode === 200) {
+      const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+      const validUser = currentUser && (currentUser.id === storeResponse.data.ownerId);
+      setIsParticipant(validUser);
+      setIsAdmin(currentUser && currentUser.isAdmin);
+    } else if (storeResponse.type === 'response' && storeResponse.errors) {
+      setErrors(storeResponse.errors);
+    } else {
+      setErrors([storeResponse]);
+    }
+  }, []);
+
   if (deal) {
     return <Redirect to={`/stores/${storeId}/deals/${deal.id}`} />;
   }
@@ -87,20 +105,26 @@ const ProductProfile = () => {
           </Link>
         </section>
         <section className="product-buttons-section">
-          <a
-            role="button"
-            href={`/stores/${storeId}/products/${productId}/edit`}
-            className="edit-delete-product-button"
-          >
-            Editar Producto
-          </a>
-          <a
-            role="button"
-            href={`/stores/${storeId}/products/${productId}/delete`}
-            className="edit-delete-product-button"
-          >
-            Eliminar Producto
-          </a>
+          {isParticipant
+            ? (
+              <a
+                role="button"
+                href={`/stores/${storeId}/products/${productId}/edit`}
+                className="edit-delete-product-button"
+              >
+                Editar Producto
+              </a>
+            ) : null}
+          {isAdmin
+            ? (
+              <a
+                role="button"
+                href={`/stores/${storeId}/products/${productId}/delete`}
+                className="edit-delete-product-button"
+              >
+                Eliminar Producto
+              </a>
+            ) : null}
         </section>
         <section className="product-card">
           <figure>
