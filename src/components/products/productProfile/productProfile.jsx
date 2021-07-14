@@ -86,18 +86,18 @@ const ProductProfile = () => {
             Ir a la tienda
           </Link>
         </section>
-        <section className="store-buttons-section">
+        <section className="product-buttons-section">
           <a
             role="button"
             href={`/stores/${storeId}/products/${productId}/edit`}
-            className="edit-delete-store-button"
+            className="edit-delete-product-button"
           >
             Editar Producto
           </a>
           <a
             role="button"
             href={`/stores/${storeId}/products/${productId}/delete`}
-            className="edit-delete-store-button"
+            className="edit-delete-product-button"
           >
             Eliminar Producto
           </a>
