@@ -1,0 +1,52 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Login view When user is not logged-in renders the login form 1`] = `
+<main>
+  <form
+    action="#"
+    className="form-user-inputs"
+    onReset={[Function]}
+    onSubmit={[Function]}
+  >
+    <h1>
+      Ingresa tus datos
+    </h1>
+    <section
+      className="form-field-100"
+    >
+      Email
+      <input
+        name="email"
+        onBlur={[Function]}
+        onChange={[Function]}
+        placeholder="email"
+        value=""
+      />
+    </section>
+    <section
+      className="form-field-100"
+    >
+      Contraseña
+      <input
+        name="password"
+        onBlur={[Function]}
+        onChange={[Function]}
+        placeholder="Contraseña"
+        type="password"
+        value=""
+      />
+    </section>
+    <section
+      className="form-submit"
+    >
+      <button
+        className="button-disabled"
+        disabled={true}
+        type="submit"
+      >
+        Iniciar sesión
+      </button>
+    </section>
+  </form>
+</main>
+`;
