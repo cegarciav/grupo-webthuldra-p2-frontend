@@ -86,8 +86,22 @@ const ProductProfile = () => {
             Ir a la tienda
           </Link>
         </section>
-        <button type="button">Editar producto</button>
-        <button type="button">Eliminar producto</button>
+        <section className="product-buttons-section">
+          <a
+            role="button"
+            href={`/stores/${storeId}/products/${productId}/edit`}
+            className="edit-delete-product-button"
+          >
+            Editar Producto
+          </a>
+          <a
+            role="button"
+            href={`/stores/${storeId}/products/${productId}/delete`}
+            className="edit-delete-product-button"
+          >
+            Eliminar Producto
+          </a>
+        </section>
         <section className="product-card">
           <figure>
             <img src={product.picture || '/default_product_picture.png'} alt={product.name} />
